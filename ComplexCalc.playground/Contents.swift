@@ -48,8 +48,74 @@ class Calculator {
         return (lhs.0 + rhs.0, lhs.1 + rhs.1)
     }
     
+    func add(lhs: [String:Int], rhs: [String:Int]) -> [String:Int] {
+        var final: [String:Int] = [:]
+        for key in lhs.keys {
+            if let left = lhs[key], let right = rhs[key] {
+                final[key] = left + right
+            }
+        }
+        return final
+    }
+    
+    func subtract(lhs: Int, rhs: Int) -> Int {
+        return lhs - rhs
+    }
+    
     func subtract(lhs: (Int, Int), rhs: (Int, Int)) -> (Int, Int) {
         return (lhs.0 - rhs.0, lhs.1 - rhs.1)
+    }
+    
+    func subtract(lhs: [String:Int], rhs: [String:Int]) -> [String:Int] {
+        var final: [String:Int] = [:]
+        for key in lhs.keys {
+            if let left = lhs[key], let right = rhs[key] {
+                final[key] = left - right
+            }
+        }
+        return final
+    }
+    
+    func multiply(lhs: Int, rhs: Int) -> Int {
+        return lhs * rhs
+    }
+    
+    func multiply(_ arr : [Int]) -> Int {
+        if arr.isEmpty {
+            return 0
+        }
+        var total = 0
+        for num in arr {
+            total *= num
+        }
+        return total
+    }
+    
+    func divide(lhs: Int, rhs: Int) -> Int {
+        return lhs / rhs
+    }
+    
+    func count(_ arr : [Int]) -> Int {
+        if arr.isEmpty {
+            return 0
+        }
+        var total = 0
+        for num in arr {
+            total += 1
+        }
+        return total
+        
+    }
+    
+    func avg(_ arr : [Int]) -> Double {
+        if arr.isEmpty {
+            return 0
+        }
+        var total = 0
+        for num in arr {
+            total += num
+        }
+        return Double(total)/Double(arr.count)
     }
     
     
