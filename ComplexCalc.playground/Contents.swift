@@ -28,7 +28,6 @@ print("Welcome back to the UW Calculator")
 //: IMPORTANT: If any tests are commented out, you will be graded a zero (0)! You should never be in the habit of eliminating tests to make the code pass.
 //:
 class Calculator {
-    // add method
     func add(lhs: Int, rhs: Int) -> Int {
         return lhs + rhs
     }
@@ -79,14 +78,14 @@ class Calculator {
     func multiply(lhs: Int, rhs: Int) -> Int {
         return lhs * rhs
     }
-    
+        
     func multiply(_ arr : [Int]) -> Int {
         if arr.isEmpty {
             return 0
         }
-        var total = 0
-        for num in arr {
-            total *= num
+        var total = arr[0]
+        for i in Range(1...arr.count-1) {
+            total *= arr[i]
         }
         return total
     }
@@ -147,6 +146,18 @@ let calc = Calculator()
 //: Keep in mind that writing new tests may reveal ambiguity in the specification above--if that's the case, document the ambiguity, declare what you think *should* happen, and write the test to test for it.
 
 // ===== Your tests go here
+
+// testing empty array for multiplication
+calc.multiply([]) == 0
+calc.add([]) == 0
+// testing adding negative numbers
+calc.add(lhs: -1, rhs: -1) == -2
+// avg empty array
+calc.avg([]) == 0
+// testing if double negatives in subtract method
+calc.subtract(lhs: -4, rhs: -2) == -2
+// testing if you begin at a 0 for multiplication within mathOp that the result should give 0
+calc.mathOp(args: [0, 1, 1, 1, 1], beg: 0, op: { $0 * $1 }) == 0
 
 //: ---
 //: ## Test code block
